@@ -1,10 +1,7 @@
-
+import java.util.Scanner;
 public class Circle2D{
 	 
 		double x, y, radius;
-	
-		
-		
 	
 	 Circle2D (){
 		 x = 0;
@@ -23,17 +20,34 @@ public class Circle2D{
 		 return 2 * Math.PI * radius;
 	 }
 	 public boolean contains(double x, double y) {
-		 
-return true;
-
+		 double spoint = (((this.x - x)*(this.x - x) + (this.y - y)*(this.y-y)));
+		 return spoint <= this.radius *this.radius;
 	 }
 	 public boolean contains(Circle2D circle) {
-			return true;
+		double distSqrt = Math.sqrt((this.x - x)*(this.x - x) + (this.y - y)*(this.y-y));
+			return this.radius > distSqrt + (this.radius * this.radius);
 		}
 	 public boolean overlaps(Circle2D circle) {
-		 return true;
+		 double distanceSqrt = Math.sqrt((this.x - x)*(this.x - x) + (this.y - y)*(this.y-y));
+		
+		 return distanceSqrt < this.radius + getRadius();
 	 }
-public static void main (String []args) {
-	
-}
+	 double getRadius() {
+		 return radius;
+	 }
+	 public static void main(String[] args) {
+	        Circle2D c1 = new Circle2D(2, 2, 5.5);
+	        System.out.println("Circle2D c1 = new Circle2D(2, 2, 5.5):");
+	        
+	        
+	        String area = String.format("%.4f", c1.getArea());
+	        System.out.println("Circle2D c1's area = " + area);
+
+	        String p = String.format("%.4f", c1.getPerimeter());
+	        System.out.println("perimeter = " + p);
+
+	        System.out.println("Result of c1.contains(3,3) = " + c1.contains(3, 3));
+	        System.out.println("Result of c1.contains(new Circle2D(4,5,10.5)) = " + c1.contains(new Circle2D(4, 5, 10.5)));
+	        System.out.println("Result of c1.overlaps(new Circle2D(3,5,2.3)) = " + c1.overlaps(new Circle2D(3, 5, 2.3)));
+	    }
 }
