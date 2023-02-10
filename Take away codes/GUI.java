@@ -4,6 +4,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -21,6 +22,7 @@ public class GUI {
 		final JLabel label = new JLabel();
 		final JComboBox cb = new JComboBox(languages);
 
+		ButtonGroup bg = new ButtonGroup();
 		JButton button = new JButton("Submit");
 		JRadioButton r1 = new JRadioButton(" Male");
 		JRadioButton r2 = new JRadioButton(" Female");
@@ -75,6 +77,8 @@ public class GUI {
 		f.add(r1);
 		f.add(r2);
 
+		bg.add(r1);
+		bg.add(r2);
 		f.setJMenuBar(mb);
 		f.setSize(400, 400);
 		f.setLayout(null);
